@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos del menú lateral */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    background-color: #183d61; /* Azul medio oscuro */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+/* Estilos de los enlaces del menú */
+.sidebar a {
+    display: block;
+    color: #fff; /* Texto en blanco */
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+/* Estilos del enlace activo en el menú */
+.sidebar a.active {
+    background-color: #1a252f; /* Azul oscuro para el enlace activo */
+}
+
+/* Estilos para el área principal de contenido */
+.content {
+    margin-left: 250px; /* Ancho del menú lateral */
+    padding: 20px;
+}
+
+/* Estilos para hacer el menú responsive */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+    .content {
+        margin-left: 0;
+    }
+}
