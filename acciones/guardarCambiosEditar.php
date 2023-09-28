@@ -19,7 +19,6 @@
     /* SE VALIDA SI LA LISTA DE REGISTROS NO ESTA VACIA, SI ESTA VACIA LA FACTURA NO SE DEBERIA PROCESAR */
     if (!empty($productosLista)) {
         // La lista de productos no está vacía::
-        // Obtener los datos enviados desde el formulario
         $idFactura = $_POST['id_factura'];
         $idCliente = $_POST['cliente'];
         $totalFinal = $_POST['total2'];
@@ -202,10 +201,8 @@
         // Obtener la altura actual del contenido
         $currentY = $pdf->GetY();
 
-        // Calcula la altura del contenido total (tabla + otros elementos)
         $totalContentHeight = $currentY;
 
-        // Asegúrate de tener suficiente espacio para el mensaje en la parte inferior
         $requiredHeight = 20; // Altura necesaria para el mensaje
 
         // Calcula la posición Y para que el mensaje esté en la parte inferior
@@ -225,11 +222,11 @@
 
         // Nombre y ruta del archivo PDF
         $file_name = 'FTR_' . $idFactura . '_' . $nombre_Cliente . '.pdf';
-        $pdf_path = 'C:/xampp/htdocs/FolderProyectos/TorniJonhs/PDFS/' . $file_name;
+        $pdf_path = 'C:/xampp/htdocs/TorniJonhs/PDFS/' . $file_name;
 
         // Guardar el PDF en la carpeta especificada
         $pdf->Output($pdf_path, 'F');
-        // La factura y el PDF se han generado correctamente
+
         echo "<script>
                 Swal.fire({
                     icon: 'success',
@@ -241,7 +238,6 @@
                 });
             </script>";
 
-        /* echo "correcto";  */
     } else {
 
         echo "<script>
@@ -256,8 +252,6 @@
     });
     </script>";
     }
-
-
 
     ?>
 </body>

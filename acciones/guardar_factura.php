@@ -228,7 +228,7 @@
 
         // Nombre y ruta del archivo PDF
         $file_name = 'FTR_' . $facturaId . '_' . $nombre_Cliente . '.pdf';
-        $pdf_path = 'C:/xampp/htdocs/FolderProyectos/TorniJonhs/PDFS/' . $file_name;
+        $pdf_path = 'C:/xampp/htdocs/TorniJonhs/PDFS/' . $file_name;
 
         // Guardar el PDF en la carpeta especificada
         $pdf->Output($pdf_path, 'F');

@@ -26,9 +26,14 @@ include "../conexion.php";
 
 <body>
 
+    <!-- PANTALLA DE CARGA:: -->
+    <div id="loader">
+        <img src="../img/Cargando.gif" alt="Indicador de carga">
+    </div>
+
     <div class="sidebar">
         <a href="../inicio.php" class="menu-link"><i class="fa-solid fa-circle-left"></i> Volver</a>
-        <a href="cerrarSesion.php" name="btncerrar"><i class="fa-solid fa-right-from-bracket"></i> <strong> Cerrar Sesión</strong></a>
+        <a href="../cerrarSesion.php" name="btncerrar"><i class="fa-solid fa-right-from-bracket"></i> <strong> Cerrar Sesión</strong></a>
 
     </div>
 
@@ -46,21 +51,20 @@ include "../conexion.php";
                         <th>Fecha emisión</th>
                         <th>Cliente</th>
                         <th style="width: 0 auto;"></th>
-                        <!-- <th style="width: 10px;"></th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    
+
                     while ($mostrar = mysqli_fetch_array($consultaFacturas)) {
-            
+
                     ?>
                         <tr>
-                            <td><?php echo "FTR_".$mostrar['id'] ?></td>
+                            <td><?php echo "FTR_" . $mostrar['id'] ?></td>
                             <td><?php echo $mostrar['fecha_emision'] ?></td>
                             <td><?php echo $mostrar['nombre_cliente'] ?></td>
-                            <td><?php echo '<a href="../acciones/editarFactura.php?id=' . $mostrar['id'] . '" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>'.' '.
-                                            '<a href="../PDFS/FTR_'. $mostrar['id'].'_'.$mostrar['nombre_cliente'].'.pdf'.'" class="btn btn-success" download><i class="fa-solid fa-download"></i></a>'?></td>
+                            <td><?php echo '<a href="../acciones/editarFactura.php?id=' . $mostrar['id'] . '" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>' . ' ' .
+                                    '<a href="../PDFS/FTR_' . $mostrar['id'] . '_' . $mostrar['nombre_cliente'] . '.pdf' . '" class="btn btn-success" download><i class="fa-solid fa-download"></i></a>' ?></td>
                         </tr>
                     <?php }
                     ?>
@@ -75,22 +79,12 @@ include "../conexion.php";
                     language: espanol
                 });
             });
+
+            window.addEventListener('load', function() {
+                var loader = document.getElementById('loader');
+                loader.style.display = 'none';
+            });
         </script>
-     <!--    <script>
-            function descargarPDF() {
-                // Cambia la ruta al archivo PDF según su ubicación en tu proyect
-                var rutaPDF = '$';
-
-                // Crea un enlace temporal para descargar el archivo
-                var enlaceTemporal = document.createElement('a');
-                enlaceTemporal.href = rutaPDF;
-                enlaceTemporal.target = '_blank'; // Abre el enlace en una nueva pestaña
-                enlaceTemporal.download = 'nombre-del-archivo.pdf'; // Nombre del archivo al descargar
-                enlaceTemporal.click(); // Simula un clic en el enlace
-            }
-        </script> -->
-
-
     </div>
 </body>
 

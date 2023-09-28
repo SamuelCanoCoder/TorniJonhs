@@ -26,17 +26,20 @@ include "../conexion.php";
 </head>
 
 <body>
+    <!-- PANTALLA DE CARGA:: -->
+    <div id="loader">
+        <img src="../img/Cargando.gif" alt="Indicador de carga">
+    </div>
 
     <div class="sidebar">
         <a href="../inicio.php" class="menu-link"><i class="fa-solid fa-circle-left"></i> Volver</a>
         <a type="button" class="menu-link" data-bs-toggle="modal" data-bs-target="#AgregarProductos"><i class="fa-solid fa-plus"></i> Agregar producto</a>
-        <a href="cerrarSesion.php" name="btncerrar"><i class="fa-solid fa-right-from-bracket"></i> <strong> Cerrar Sesión</strong></a>
-
+        <a href="../cerrarSesion.php" name="btncerrar"><i class="fa-solid fa-right-from-bracket"></i> <strong> Cerrar Sesión</strong></a>
     </div>
 
+
+    <!-- CONTENIDO DE LA PAGINA: -->
     <div class="content" id="contenido">
-
-
         <div class="modal fade" id="AgregarProductos" tabindex="-1" aria-labelledby="miVentanaModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -61,58 +64,12 @@ include "../conexion.php";
                         <div class="modal-footer">
                             <button type="button" id="btnRegistrar" class="btn btn-success">Registrar</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            
+
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
-<!-- SCRIPT PARA EL REGISTRO DE PRODUCTOS::: -->
-
-<script>
-$(document).ready(function() {
-    // Envío del formulario usando AJAX
-    $("#btnRegistrar").on("click", function() {
-        var nombre = $("#nombre").val();
-        var precio = $("#precio").val();
-        var categoria = $("#categoria").val();
-
-        $.ajax({
-            type: "POST",
-            url: "../acciones/agregar_productos.php", // Reemplaza "agregar_producto.php" con la URL del script que procesa el registro en el servidor
-            data: {
-                nombre: nombre,
-                precio: precio,
-                categoria: categoria
-            },
-            success: function(response) {
-                // Si el registro se realiza correctamente, actualizamos la tabla con el nuevo producto
-                $("#TablaTodosProductos tbody").append(response);
-
-                // Cerramos la ventana modal
-                $("#AgregarProductos").modal("hide");
-                
-                // Limpiamos los campos del formulario
-                $("#nombre").val("");
-                $("#precio").val("");
-                $("#categoria").val("");
-            },
-            error: function() {
-                alert("Ha ocurrido un error al registrar el producto.");
-            }
-        });
-    });
-
-    // Configuración de DataTables
-    $('#TablaTodosProductos').DataTable({
-        language: espanol
-    });
-});
-</script>
-
-
-<!-- FIN SCRIPT -->
 
         <h2 class="text-center mt-4"><i class="fa-solid fa-boxes-stacked"> Productos</i></h2>
         <div id="CajaProductos" class="mt-5 m-5 p-4">
@@ -143,17 +100,58 @@ $(document).ready(function() {
                 </tbody>
             </table>
         </div>
+    </div>
 
-        <script src="../js/idiomaTablas.js"></script>
-        <!-- <script>
-            $(document).ready(function() {
-                $('#TablaTodosProductos').DataTable({
-                    language: espanol
+
+    <!-- SCRIPT PARA EL REGISTRO DE PRODUCTOS::: -->
+    <script src="../js/idiomaTablas.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Envío del formulario usando AJAX
+            $("#btnRegistrar").on("click", function() {
+                var nombre = $("#nombre").val();
+                var precio = $("#precio").val();
+                var categoria = $("#categoria").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "../acciones/agregar_productos.php", // Reemplaza "agregar_producto.php" con la URL del script que procesa el registro en el servidor
+                    data: {
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    },
+                    success: function(response) {
+                        // Si el registro se realiza correctamente, actualizamos la tabla con el nuevo producto
+                        $("#TablaTodosProductos tbody").append(response);
+
+                        // Cerramos la ventana modal
+                        $("#AgregarProductos").modal("hide");
+
+                        // Limpiamos los campos del formulario
+                        $("#nombre").val("");
+                        $("#precio").val("");
+                        $("#categoria").val("");
+                    },
+                    error: function() {
+                        alert("Ha ocurrido un error al registrar el producto.");
+                    }
                 });
             });
-        </script> -->
 
-    </div>
+            // Configuración de DataTables
+            $('#TablaTodosProductos').DataTable({
+                language: espanol
+            });
+        });
+
+        window.addEventListener('load', function () {
+            var loader = document.getElementById('loader');
+            loader.style.display = 'none';
+        });
+    </script>
+    <!-- FIN SCRIPT PARA REGISTRO DE PRODUCTOS-->
+
 </body>
 
 </html>

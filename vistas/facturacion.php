@@ -29,11 +29,14 @@ include "../conexion.php";
 </head>
 
 <body>
+     <!-- PANTALLA DE CARGA:: -->
+    <div id="loader">
+        <img src="../img/Cargando.gif" alt="Indicador de carga">
+    </div>
 
     <div class="sidebar">
         <a href="../inicio.php" class="menu-link"><i class="fa-solid fa-circle-left"></i> Volver</a>
-        <a href="cerrarSesion.php" name="btncerrar"><i class="fa-solid fa-right-from-bracket"></i> <strong> Cerrar Sesión</strong></a>
-
+        <a href="../cerrarSesion.php" name="btncerrar"><i class="fa-solid fa-right-from-bracket"></i> <strong> Cerrar Sesión</strong></a>
     </div>
 
     <div class="content p-5" id="contenido">
@@ -295,6 +298,11 @@ include "../conexion.php";
             var nuevoTotal2 = totalFinal - totalEliminado;
             $("#total2").val(nuevoTotal2.toFixed(2));
         }
+
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('loader');
+            loader.style.display = 'none';
+        });
     </script>
 
 </body>
