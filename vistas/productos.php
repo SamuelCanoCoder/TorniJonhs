@@ -1,5 +1,6 @@
 <?php
 include "../conexion.php";
+include "../validar_sesion.php";
 
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

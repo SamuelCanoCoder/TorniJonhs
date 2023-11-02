@@ -25,21 +25,16 @@
                 <form method="POST" action="validacion_login.php">
                     <div class="mt-4 form-label-group">
                         <label for="usuario" class="form-label">Usuario</label>
-                        <input type="email" name="usuario" id="usuario" placeholder="Ingresa tu usuario" class="form-control" required>
+                        <input type="text" name="usuario" id="usuario" placeholder="Ingresa tu usuario" class="form-control" required>
                     </div>
                     <div class="mt-4 form-label-group">
-                        <label for="contraseña" class="form-label">Contraseña</label>
+                        <label for="contrasena" class="form-label">Contraseña</label>
                         <input type="password" name="contrasena" id="contrasena" placeholder="Ingresa tu contraseña" class="form-control" required>
                     </div>
                     <div class="d-grid mt-4">
                         <button type="submit" class="btn btn-success">Ingresar</button>
                     </div>
                 </form>
-                <!-- <div class="mt-4 text-center">
-                    <p><a class="text-decoration-none" href="olvidoContrasena.php">¿Olvidaste tu contraseña?</a></p>
-                    <p><a class="text-decoration-none" href="">Registrate aquí</a></p>
-                </div> -->
-
             </div>
         </div>
     </div>
